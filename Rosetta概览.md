@@ -2,7 +2,7 @@
 description: 这篇文档翻译自：https://www.rosettacommons.org/support/overview。水平有限，如有错误或不当之处欢迎修改。
 ---
 
-# 概览
+# Rosetta概览
 
 ### &#x20;Rosetta软件套件概述
 
