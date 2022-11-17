@@ -1,2 +1,2 @@
 # Rosetta-Chinese
-Rosetta翻译
+Rosetta文档翻译
