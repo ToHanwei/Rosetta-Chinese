@@ -2,7 +2,7 @@
 description: 翻译自：https://new.rosettacommons.org/docs/latest/Home
 ---
 
-# Home
+# 😉 Home
 
 ## 什么是Rosetta?
 

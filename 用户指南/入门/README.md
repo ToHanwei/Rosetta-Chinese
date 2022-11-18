@@ -2,26 +2,26 @@
 description: 翻译自：https://new.rosettacommons.org/docs/latest/getting_started/Getting-Started
 ---
 
-# 入门
+# 😂 入门
 
 此页面是为刚接触Rosetta的科学家们编写的: 或许是一年级研究生，或者年轻的博士后，他们收到/启动了一个需要“一些计算机建模”的项目。换句话说，一个从零开始的Rosetta初学者。Rosetta是您需要做建模的优秀工具吗？如果是这样，您将如何获取和使用Rosetta？如果您已经对这些概念感到熟悉，请随时跳过。
 
 Rosetta是一个非常大的大分子建模软件套件。所谓软件套件，这里我们指的是大量计算机代码的集合（主要是C++,一些是Python，还有一些其他编程语言），但它不是单一的整体程序。通过大分子建模，我们指的是评估和排序生物大分子不同结构的物理学合理性的过程（通常是蛋白质，但核酸和配体【译者注：这里应该指的是小分子】也得到了显著地支持，并且对隐式脂质膜的支持正在增加）。通常，用户会在Rosetta中[选择一些特定的协议](https://new.rosettacommons.org/docs/latest/getting\_started/Solving-a-Biological-Problem)，并向该协议提供以下输入：A）要处理的结构；B）协议中的哪些选项适合于用户的需求。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-| 目录                                                                                          |
-| ------------------------------------------------------------------------------------------- |
-| [我准备好我需要的东西了吗？](入门.md#wo-zhun-bei-hao-wo-xu-yao-de-dong-xi-le-ma)                           |
-| [公共Rosetta服务](入门.md#gong-gong-rosetta-fu-wu)                                                |
-| [商用Rosetta服务](入门.md#shang-yong-rosetta-fu-wu-1)                                             |
-| [Rosetta入门教程](入门.md#rosetta-ru-men-jiao-cheng)                                              |
-| [在Mac/Linux上安装](入门.md#zai-maclinux-shang-an-zhuang)                                         |
-| [Windows系统](入门.md#windows-xi-tong)                                                          |
-| [在计算集群上使用Rosetta](入门.md#zai-ji-suan-ji-qun-shang-shi-yong-rosetta-1)                        |
-| [Rosetta在国家级超级计算机上的使用](入门.md#rosetta-zai-guo-jia-ji-chao-ji-ji-suan-ji-shang-de-shi-yong-1) |
-| [如何更新这些文档](入门.md#ru-he-geng-xin-zhe-xie-wen-dang)                                           |
-| [更多资源](入门.md#geng-duo-zi-yuan)                                                              |
+| 目录                                                                                       |
+| ---------------------------------------------------------------------------------------- |
+| [我准备好我需要的东西了吗？](./#wo-zhun-bei-hao-wo-xu-yao-de-dong-xi-le-ma)                           |
+| [公共Rosetta服务](./#gong-gong-rosetta-fu-wu)                                                |
+| [商用Rosetta服务](./#shang-yong-rosetta-fu-wu-1)                                             |
+| [Rosetta入门教程](./#rosetta-ru-men-jiao-cheng)                                              |
+| [在Mac/Linux上安装](./#zai-maclinux-shang-an-zhuang)                                         |
+| [Windows系统](./#windows-xi-tong)                                                          |
+| [在计算集群上使用Rosetta](./#zai-ji-suan-ji-qun-shang-shi-yong-rosetta-1)                        |
+| [Rosetta在国家级超级计算机上的使用](./#rosetta-zai-guo-jia-ji-chao-ji-ji-suan-ji-shang-de-shi-yong-1) |
+| [如何更新这些文档](./#ru-he-geng-xin-zhe-xie-wen-dang)                                           |
+| [更多资源](./#geng-duo-zi-yuan)                                                              |
 
 ### 我准备好我需要的东西了吗？
 
