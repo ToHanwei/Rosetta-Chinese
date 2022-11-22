@@ -224,3 +224,63 @@ description: >-
 
 ## 化学连通性
 
+* [ForceDisulfides](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/ForceDisulfidesMover)
+
+> 给定残基对列表（例如，二硫化物），重新填充它们周围的残基，但不要改变 CYS 类型残基本身。
+
+* DisulfideInsertion
+
+> 将两个残基位突变为CYS:二硫位，将它们构象连接，并添加约束条件，使其对位姿具有良好的二硫位距、角度和二面体。用于在短的潜在的大环肽中添加二硫键。
+
+* [DisulfideMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DisulfideMover)
+
+> 给定两个残基位置，将两者突变为CYS:二硫键，并将其构象连接;没有重新填充或最小化
+
+* [Disulfidize](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DisulfidizeMover)
+
+> 在一个姿势中尝试每一对可能的残基，尝试引入一个或多个新的二硫化物，只要它们得分好
+
+## 设计
+
+* [FastDesign](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/FastDesignMover)
+
+> [在设计中控制氨基酸组成](https://new.rosettacommons.org/docs/latest/rosetta\_basics/scoring/AACompositionEnergy)
+
+* CoupledMover
+
+> FastRelax mover在重新填充时的设计
+
+* [RemodelMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RemodelMover)
+
+> 功能极为多样:可做设计、重新填充、完成骨架重塑、二硫键构建、酶设计等
+
+* EnzdesRemodelMover
+* [PredesignPerturbMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/PredesignPerturbMover)
+* [DesignMinimizeHbondsMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DesignMinimizeHBondsMover)
+* [GreedyOptMutationMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/GreedyOptMutationMover)
+* ParetoOptMutationMover
+* [MutateResidue](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/MutateResidueMover)
+* [RandomMutation](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RandomMutationMover)
+* [ConsensusDesignMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/ConsensusDesignMover)
+* AntibodyDesignMover
+* AntibodyDesignProtocol
+* DesignProteinBackboneAroundDNA
+* MatDesGreedyOptMutationMover
+* FlxbbDesign
+
+> 可以被赋予一个蓝图文件以推断成一个移动图（movemap）；做设计，可以做一些弛豫；在设计之前将你的姿势转换为丙氨酸
+
+* DnaInterfaceMultiStateDesign
+* NcbbDockDesign
+
+> 非标准骨架的对接与设计(类似肽（peptidomimetics）)
+
+* LigandDesign
+* 不是设计移动本身，但他们偏向氨基酸组成的序列，因此可以有助于设计协议。
+
+
+
+
+
+
+
