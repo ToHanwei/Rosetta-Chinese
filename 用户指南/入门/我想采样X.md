@@ -88,3 +88,139 @@ description: >-
 * [GenericSimulatedAnnealer](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/GenericSimulatedAnnealerMover)
 * [GeneralizedKIC](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/composite\_protocols/generalized\_kic/GeneralizedKIC)
 
+## 骨架自由度
+
+* [Backrub](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/BackrubMover)
+* [BackrubDD](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/BackrubDDMover)
+* BackrubSidechain
+* ShortBackrubMover
+
+> 一种特殊形式的骨架运动，旨在协调保持特定的侧链位置。
+
+* [Small](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SmallMover)
+
+> 对骨架自由度做小的扰动
+
+* Shear
+
+> 对残基的一个二面角进行小的扰动，对另一个二面角进行反向扰动，以避免“杠杆臂效应”（lever arm effect）
+
+* [SetTorsion](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SetTorsionMover)
+
+> 将扭转（torsion）【译者注：猜测是可旋转键的扭转角】设置为一个值或者通过一个值进行扰动（使用perturb标签）
+
+* MinimizeBackbone
+
+> 只最小化骨架
+
+* RandomOmegaFlipMover
+
+> 随机翻转一个欧米茄角（omega angle），对肽最有用
+
+* BackboneTorsionPerturbation
+* BackboneTorsionSampler
+* BBGaussian
+
+## 侧链自由度
+
+* SetChiMover
+* [SymRotamerTrialsMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SymPackRotamersMover)
+* [PackRotamersMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/PackRotamersMover)
+* [RotamerTrialsMinMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RotamerTrialsMinMover)
+* [RotamerTrialsMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RotamerTrialsMover)
+* [RotamerTrialsRefiner](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RotamerTrialsRefinerMover)
+* [Sidechain](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SidechainMover)
+* [SidechainMC](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SidechainMCMover)
+* RepackTrial
+* [RepackingRefiner](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RepackingRefinerMover)
+* BoltzmannRotamerMover
+* [PackRotamersMoverPartGreedyMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/PackRotamersMoverPartGreedyMover)
+* [Prepack](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/PrepackMover)
+* [SymPackRotamersMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/SymPackRotamersMover)
+* PerturbRotamerSidechain
+* [DnaInterfacePacker](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DnaInterfacePackerMover)
+* PerturbChiSidechain
+
+## 任意构象自由度
+
+* RandomTorsionMover
+
+> 从移动图（movemap）中选择随机的角度进行扭转
+
+## Loop构象采样
+
+* AnchoredGraftMover
+
+> 一个复合的移动器（mover），它进行大量的loop建模，然后重新填充嫁接的残基
+
+* [KicMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/KicMover)
+* LegacyKicSampler
+* SmallMinCCDTrial
+* ShearMinCCDTrial
+* [LoopBuilder](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopBuilderMover)
+* LoopCM
+* [LoopCreationMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopCreationMover)
+* [LoopFinder](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopFinderMover)
+* LoopHash
+* LoopHashDiversifier
+* LoopHashLoopClosureMover
+
+> LoopHash算法构成了一种非常快速的方式，从可以实现给定闭包的片段库中提取loop构象
+
+* [LoopLengthChange](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopLengthChangeMover)
+* [LoopModeler](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopModelerMover)
+* [LoopMoverFromCommandLine](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopMoverFromCommandLineMover)
+* LoopMover\_Perturb\_CCD
+* LoopMover\_Perturb\_KIC
+* LoopMover\_Perturb\_QuickCCD
+* LoopMover\_Perturb\_QuickCCD\_Moves
+* LoopMover\_Refine\_Backrub
+* LoopMover\_Refine\_CCD
+* LoopMover\_Refine\_KIC
+* LoopMover\_SlidingWindow
+* [LoopProtocol](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopProtocolMover)
+* LoopRefineInnerCycleContainer
+* LoopRelaxMover
+* [LoopRemodel](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopRemodelMover)
+* [LoophashLoopInserter](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/LoopCreationMover)
+* LoopmodelWrapper
+* CCDEndsGraftMover
+* CCDLoopCloser
+* CCDLoopClosureMover
+* DefineMovableLoops
+* [GeneralizedKIC](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/composite\_protocols/generalized\_kic/GeneralizedKIC)
+
+> 一个庞大而复杂的系统，它主要独立运行以对任意原子序列执行动态的loop闭合。
+
+## 对接
+
+* [DARC](https://new.rosettacommons.org/docs/latest/application\_documentation/docking/DARC) app
+
+> 通过光线投射（ray casting）算法在gpu上加速
+
+* [FlexPepDock](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/FlexPepDockMover)
+
+> 同时对肽的骨架自由度进行采样
+
+* SymDockProtocol
+
+> 对低聚物对接
+
+* [RigidBodyTransMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/RigidBodyTransMover)
+
+> 手动操纵跨越跳跃的两个物体的相对位置
+
+* RigidBodyPerturbNoCenter
+* UnbiasedRigidBodyPerturbNoCenter
+* UniformRigidBodyCM
+* Docking
+* [DockingInitialPerturbation](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DockingInitialPerturbationMover)
+* [DockingProtocol](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DockingProtocolMover)
+* DnaInterfaceMinMover
+* SymFoldandDockRbTrialMover
+* [HighResDocker](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/HighResDockerMover)
+* DockSetupMover
+* [DockWithHotspotMover](https://new.rosettacommons.org/docs/latest/scripting\_documentation/RosettaScripts/Movers/movers\_pages/DockWithHotspotMover)
+
+## 化学连通性
+
