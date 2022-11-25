@@ -23,12 +23,12 @@ Rosetta协议的概述非常通用：您获取一组输入数据，指定假定�
 
 ## 更多资源
 
-* [解决一个生物学问题](解决一个生物学问题.md)：使用Rosetta解决生物学问题的指南
+* [解决一个生物学问题](jie-jue-yi-ge-sheng-wu-xue-wen-ti.md)：使用Rosetta解决生物学问题的指南
 * [Rosetta在不同尺度上应用](https://new.rosettacommons.org/docs/latest/getting\_started/Rosetta-on-different-scales)：关于解决一个问题需要做多少工作的讨论
 * [比较结构](https://new.rosettacommons.org/docs/latest/getting\_started/Comparing-Structures)：关于比较结构的论文
 * [Rosetta 中的单位](https://new.rosettacommons.org/docs/latest/rosetta\_basics/Units-in-Rosetta)：描述Rosetta能量单位和其他测量单位
 * [应用程序文档](https://new.rosettacommons.org/docs/latest/application\_documentation/Application-Documentation)：链接到各种Rosetta应用程序的文档
 * [命令集合](https://new.rosettacommons.org/docs/latest/application\_documentation/commands-collection)：用于运行 Rosetta 可执行文件的示例命令行列表
 * [Rosetta服务](https://new.rosettacommons.org/docs/latest/Rosetta-Servers)：基于Web服务的Rosetta应用程序
-* [学习生物物理学和计算建模的资源](https://new.rosettacommons.org/docs/latest/getting\_started/Resources-for-learning-biophysics-and-computational-modeling)
+* [学习生物物理学和计算建模的资源](学习生物物理学.md)
 

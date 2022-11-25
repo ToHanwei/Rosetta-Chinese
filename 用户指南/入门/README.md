@@ -102,7 +102,7 @@ cd main/source
 ### 更多资源
 
 * [Rosetta 入门教程](https://www.rosettacommons.org/demos/latest/Home#tutorials)
-* [学习生物物理学和计算建模的资源](https://new.rosettacommons.org/docs/latest/getting\_started/Resources-for-learning-biophysics-and-computational-modeling)
+* [学习生物物理学和计算建模的资源](学习生物物理学.md)
 * [构建文档](https://new.rosettacommons.org/docs/latest/build\_documentation/Build-Documentation)：有关设置 Rosetta 的信息
 * [我想做某某](https://new.rosettacommons.org/docs/latest/getting\_started/I-want-to-do-x)：使用RosettaScripts进行特定类型的结构扰动的指南
 * [应用程序文档](https://new.rosettacommons.org/docs/latest/application\_documentation/Application-Documentation)：链接到各种 Rosetta 应用程序的文档
@@ -115,3 +115,4 @@ cd main/source
 * [FAQ](https://new.rosettacommons.org/docs/latest/getting\_started/FAQ) : 常见问题
 * [词汇表](https://new.rosettacommons.org/docs/latest/rosetta\_basics/Glossary/Glossary)：Rosetta 术语的简要定义
 * [RosettaEncyclopedia](https://new.rosettacommons.org/docs/latest/rosetta\_basics/RosettaEncyclopedia)：Rosetta术语的详细说明
+
