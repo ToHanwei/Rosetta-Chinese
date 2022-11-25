@@ -348,7 +348,7 @@ description: >-
 * [入门](./)：Rosetta 新用户的页面
 * [学习生物物理学和计算建模的资源](学习生物物理学.md)
 * [应用程序文档](https://new.rosettacommons.org/docs/latest/application\_documentation/Application-Documentation)：链接到各种 Rosetta 应用程序的文档
-* [分析结果](https://new.rosettacommons.org/docs/latest/getting\_started/Analyzing-Results)：分析使用 Rosetta 生成的结果的技巧
+* [分析结果](分析结果.md)：分析使用 Rosetta 生成的结果的技巧
 * [比较结构](https://new.rosettacommons.org/docs/latest/getting\_started/Comparing-Structures)：关于比较结构的论文
 * [命令集合](https://new.rosettacommons.org/docs/latest/application\_documentation/commands-collection)：用于运行 Rosetta 可执行文件的示例命令行列表
 * [Rosetta服务](https://new.rosettacommons.org/docs/latest/Rosetta-Servers)：基于Web服务的Rosetta应用程序
