@@ -175,7 +175,55 @@ $ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys_zero
 
 #### 准备结构
 
+为大多数Rosetta协议准备输入结构的推荐方法是运行优化协议，在运行你想要的Rosetta应用之前对你的结构进行弛豫。关于放松的详细教程可以在[这里](https://www.rosettacommons.org/demos/latest/tutorials/Relax\_Tutorial/Relax)找到。
 
+虽然我们希望缓解输入结构中的冲突，并确保满足Rosetta的所有规范，但我们不希望主干发生太多变化。在`<path_to_Rosetta_directory>/demos/tutorials/input_and_output/flag_input_relax`中指定了一组通用选项。
+
+```bash
+-nstruct 2
+
+-relax:constrain_relax_to_start_coords
+-relax:ramp_constraints false
+
+-ex1
+-ex2
+
+-use_input_sc
+-flip_HNQ
+-no_optH false
+```
+
+
+
+设置更高的`nstruct`，例如`nstruct 10`，会增加优化运行的次数，并可能产生更好的结果，但也可能会消耗大量时间。
+
+我们将使用这个标签文件来完善直接从Protein Data Bank中提取的PDB 1QYS，这可能需要几分钟的时间来运行。
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb @flag_input_relax
+```
+
+这将产生三个文件：`1qys_0001.pdb`,`1qys_0002.pdb`和`score.sc`. 使用分数文件中较低`total_score`的PDB作为协议的输入PDB。
+
+> 如果需要，这些选项还可以由ignore\_unrecognized\_res和ignore\_zero\_occuany false补充。
+
+使用ignore\_unrecognized\_res这样的标签可能会删除你想考虑的配体和水分子
+
+> 确保您想要建模的所有残留都存在于优化的PDB中
+
+#### 设置输入搜索路径
+
+如果我们有多个输入文件，从一个路径位置搜索输入可能会有所帮助。例如，在`relax`同型二聚体PDB 4EQ1上运行协议时，我们可能希望限制蛋白质-蛋白质界面距离并防止它们移动。（可以在[此处](https://www.rosettacommons.org/demos/latest/tutorials/Constraints\_Tutorial/Constraints)找到有关约束的详细教程）。为此，我们需要一个`constrained_atompairs.cst`也位于目录中的约束文件`input_files`。当我们有多个这样的文件时，使用指定的 input\_directory运行`in:path`会有所帮助，如下所示：
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:path input_files -in:file:s 4eq1.pdb -constraints:cst_fa_file constrained_atompairs.cst -ignore_unrecognized_res @flag_input_relax
+```
+
+这将需要15分钟以上的时间来运行并产生4eq1\_0001.pdb、4eq1\_0002.pdb和score.sc文件。
+
+#### 改变输入表示—质心或全原子
+
+Rosetta使用两种结构表示法——更精细的_完整原子_表示和更粗糙的中心表示。可以在[此处](https://www.rosettacommons.org/demos/latest/tutorials/full\_atom\_vs\_centroid/fullatom\_centroid)找到关于两者的区别和使用的详细教程。为确保Rosetta了解您输入文件的表示形式，我们使用`in:file:centroid`或`in:file:fullatom`选项。示例运行可以在上面链接的教程中找到。
 
 
 
