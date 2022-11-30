@@ -258,5 +258,19 @@ SCORE:  -167.539   -414.834     48.380    225.004           1.040    -45.212    
 
 Rosetta主要使用两种格式来输出结构——PDB文件和静默文件。这两个文件已在[上一节](控制Rosetta的输入输出.md#tong-yong-de-shu-ru-wen-jian)中进行了描述。
 
+#### PDB结构
+
+这是Rosetta的默认输出格式。对于默认不输出结构的应用程序，如打分应用程序，该选项`-out:pdb`强制Rosetta输出PDB。这在[评分教程](https://www.rosettacommons.org/demos/latest/tutorials/scoring/scoring)中进行了演示。
+
+#### 静默文件
+
+要将输出文件格式更改为静默文件，我们将使用标志`out:file:silent <filename>`. 由于静默文件能够在一个文件中存储多个结构，因此只有一个我们需要指定其名称的输出结构文件。我们将运行上面的[结构准备](控制Rosetta的输入输出.md#zhun-bei-jie-gou)示例来生成_二进制静默结构文件_。
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb -out:file:silent output_files/1qys.o @flag_input_relax
+```
+
+这将需要几分钟的时间来运行并在`output_files`目录中生成一个静默文件`1qys.o`
+
 
 
