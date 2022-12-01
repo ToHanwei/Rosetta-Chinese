@@ -326,3 +326,102 @@ $ROSETTA3/bin/extract_pdbs.default.linuxgccrelease -in:file:silent input_files/1
 
 为了在产生大量结构时节省空间，Rosetta可以自动gzip输出文件。添加选项`-out:pdb_gz`**而不是** `-out:pdb`生成压缩的PDB。在out:file:silent \<filename>生成后缀为.gz的压缩静默文件。
 
+#### 打分函数格式
+
+Rosetta 支持两种格式的乐谱文件：text（默认）和json。在这些教程中，我们将使用text格式。要切换到json格式，我们可以使用这个选项:`-out:file:scorefile_format json`
+
+```bash
+$ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:file:scorefile_format json
+```
+
+score.sc文件将以json文件格式输出，文件格式类似于：
+
+```bash
+{"decoy":"1qys_0001","dslf_fa13":0.0,"fa_atr":-423.6380475930665,"fa_dun":109.6621482859311,"fa_elec":-46.14556889816026,"fa_intra_rep":1.039804508830972,"fa_rep":49.11676788120327,"fa_sol":241.3087947011393,"hbond_bb_sc":-3.934076636117379,"hbond_lr_bb":-26.99785324074625,"hbond_sc":-11.23440113070099,"hbond_sr_bb":-25.49074432555559,"linear_chainbreak":0.0,"omega":4.210525847130253,"overlap_chainbreak":0.0,"p_aa_pp":-13.60293063430587,"pro_close":0.0,"rama":-4.90454720392658,"ref":-12.642703,"score":-163.0225982666016,"time":1.0,"total_score":-163.0225937016587,"yhh_planarity":0.2302377366858926}
+```
+
+#### 为输出文件添加前缀和后缀
+
+默认情况下，Rosetta使用输入结构的文件名通过附加数字后缀（如 \_0001 和 \_0002）来作为输出结构的名称。如果您想为输出结构添加前缀或后缀，请使用`-out:prefix <string>`或`-out:suffix <string>`. 在此示例中，我们将字符串_pre\__作为前缀和字符串_\_suf_作为后缀添加到输出中。执行下面命令：
+
+```bash
+$ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:pdb -out:prefix pre_ -out:suffix _suf
+```
+
+运行结束后将在您当前的工作目录中生成`pre_1qys_suf_0001.pdb`和`pre_score_suf.sc`文件
+
+#### 设置输出路径
+
+在本教程中，我们一直在当前工作目录中输出打分和结构文件。如果不想这么做，我们可以使用`-out:path:all`选项。让我们再次运行打分程序，同时将PDB和打分文件保存在文件夹中`output_files`。
+
+```bash
+$ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:pdb -out:path:all output_files
+```
+
+您会在`output_files`目录中找到`1qys_0001.pdb`和`score.sc`文件。
+
+如果想将打分文件和pdb保存在不同的位置，请使用`-out:path:score`和`-out:path:pdb`选项。
+
+#### 强制和禁止文件
+
+在关于[输出PDB文件](控制Rosetta的输入输出.md#pdb)的部分，我们已经看到score\_jd2如何使用标志-out:pdb强制输出它实际正在评分的PDB文件。
+
+如果你想抑制输出文件，我们可以使用参数-out:nooutput。这尤其是用在你只想看一下日志，而不想检查输出结构的情况下。这个标志的另一个潜在用途是在某些直接写入非结构、非分数文件的协议中。
+
+如果你特别想忽略某一类文件的输出，比如说打分文件，你可以把重定向到/dev/null的UNIX设备。在下面的例子中，我们强制score\_jd2输出一个PDB文件，但没有score文件被输出。
+
+```bash
+$ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:pdb -out:path:score /dev/null
+```
+
+您当前的工作目录应该只包含`1qys_0001.pdb`，但没有`score.sc`文件。
+
+#### 只输出打分文件
+
+如果你只想输出一个打分文件，你应该使用选项-out:file:score\_only \<score\_file\_name>。在下面的例子中，我们将运行：
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:file:score_only output_files/score.sc @flag_input_relax
+```
+
+在output\_files目录下只有score.sc文件，而不输出结构文件。
+
+#### 调整日志的详细程度
+
+当你运行Rosetta时，日志会显示相当多的信息。有时你可能想知道更多关于这个过程的信息，例如，当你遇到一个错误或一个意外的结果。有时你可能想减少日志中的细节。Rosetta允许你通过选项-out:level 来调整日志中的细节级别。以下是接受的数值列表：
+
+| Integer |   Level |
+| ------- | ------: |
+| 0       |   Fatal |
+| 100     |   Error |
+| 200     | Warning |
+| 300     |    Info |
+| 400     |   Debug |
+| 500     |   Trace |
+
+在默认情况下，Rosetta使用300级别。在本教程中，我们将提高细节级别，以包括对调试score\_jd2有用的信息。
+
+```bash
+$ROSETTA3/bin/score_jd2.default.linuxgccrelease -in:file:s input_files/1qys.pdb -out:level 400
+```
+
+这是您应该看到的日志文件的片段：
+
+```bash
+...
+core.chemical: New atom type: aroC C
+...
+core.chemical.ElementSet: New element: Pt
+...
+core.chemical: Reading patch file: /home/ssrb/Rosetta/main/database/chemical/residue_type_sets/fa_standard/patches/CtermProteinFull.txt
+...
+core.pose.util: new fold tree FOLD_TREE  EDGE 1 92 -1  EDGE 1 93 1  EDGE 1 94 2  EDGE 1 95 3  EDGE 1 96 4  EDGE 1 97 5  EDGE 1 98 6  EDGE 1 99 7 
+...
+```
+
+现在你看到了一堆以前没有出现的信息。在上面的代码片段中，我们看到了 Rosetta 识别的残基类型和元素类型（与芳香环和铂相关联的 C），它可以应用的所有补丁（使残基成为 C 端的补丁）和修改后的[折叠树](https://www.rosettacommons.org/demos/latest/tutorials/minimization/minimization.md#a-note-about-the-foldtree)。
+
+
+
+
+
