@@ -421,7 +421,59 @@ core.pose.util: new fold tree FOLD_TREE  EDGE 1 92 -1  EDGE 1 93 1  EDGE 1 94 2 
 
 现在你看到了一堆以前没有出现的信息。在上面的代码片段中，我们看到了 Rosetta 识别的残基类型和元素类型（与芳香环和铂相关联的 C），它可以应用的所有补丁（使残基成为 C 端的补丁）和修改后的[折叠树](https://www.rosettacommons.org/demos/latest/tutorials/minimization/minimization.md#a-note-about-the-foldtree)。
 
+#### 在Rosetta协议中复制输出
 
+Rosetta中的大多数协议都使用[Monte Carlo 采样](https://www.rosettacommons.org/demos/latest/tutorials/Optimizing\_Sidechains\_The\_Packer/Optimizing\_Sidechains\_The\_Packer.md#how-the-packer-algorithm-works-under-the-hood-for-advanced-users)。虽然这种随机采样方法加速搜索能量的最小值，但它在每次运行中都会产生不同的轨迹。Rosetta使用系统设备提供的随机数_种子_`/dev/urandom`来生成它用于应用程序的伪随机数。这个种子可以是C++ _int_数据类型可以容纳的任何整数，建议的范围是±seed10^6\~10^9。它在每次运行开始时显示在日志中，如下所示：
+
+```bash
+...
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=340573764 seed_offset=0 real_seed=340573764
+...
+```
+
+此代码段中的种子是 340573764。
+
+> **在所有其他条件相同的情况下，使用相同种子在同一系统上运行的 Rosetta 协议的每次运行都应该具有相同的轨迹。如果你想稍后复制一次运行，你应该存储你运行的种子并在以后使用它。**
+
+在此示例中，我们将`relax`通过指定常量种子使用上面建议的应用程序生成相同的输出。为此，我们需要`-run:constant_seed`确保种子不变的标志。默认常量种子为1111111，我们将使用该`-run:jran`选项将其更改为12345678。从同一系统运行时，每次运行以下命令都应生成相同的结构集和分数文件:
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/1qys.pdb -run:constant_seed -run:jran 12345678 @flag_input_relax
+```
+
+日志文件将指示您正在使用常量种子运行。
+
+```bash
+...
+core.init: Constant seed mode, seed=12345678 seed_offset=0 real_seed=12345678
+...
+```
+
+#### PyMOL中的实时可视化
+
+随着模拟的进行，可视化Rosetta如何修改生物分子通常很有用。您可以在分子可视化包[PyMOL](https://www.pymol.org/)中这样做。要将PyMOL Observer附加到您的运行中，您需要首先在Rosetta和PyMOL之间创建链接。打开 PyMOL并在PyMOL的命令行中运行：
+
+```bash
+run <path_to_Rosetta_directory>/main/source/src/python/bindings/PyMOLPyRosettaServer.py
+```
+
+您将在PyMOL显示中看到日志文件：
+
+```bash
+PyMOL <---> PyRosetta link started!
+```
+
+为了显示生物分子，我们将通过`run:-show_simulation_in_pymol <time_in_seconds>`. 默认情况下，Observer每5 秒捕获一次状态，我们可以根据需要对这个值进行更改。为了保留运行期间访问的状态的历史记录，我们将传递选项`-keep_pymol_simulation_history`，这对于制作电影特别有用。这确实会稍微减慢运行速度：
+
+在此示例中，我们将`relax`使用PyMOL捕获本机PDB 1QYS的运行，并通过每4.5秒捕获一次快照来记录弛豫的历史记录。
+
+假设您已经建立了PyMOL和Rosetta之间的链接，运行以下命令并观察PyMOL：
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb -show_simulation_in_pymol 4.5 -keep_pymol_simulation_history @flag_input_relax
+```
+
+您将观察结构的不同部分进行小动作。这就是`relax`（有约束）对结构所做的，直到它达到令人满意的结构。
 
 
 
