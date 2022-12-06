@@ -473,7 +473,34 @@ PyMOL <---> PyRosetta link started!
 $ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb -show_simulation_in_pymol 4.5 -keep_pymol_simulation_history @flag_input_relax
 ```
 
-您将观察结构的不同部分进行小动作。这就是`relax`（有约束）对结构所做的，直到它达到令人满意的结构。
+您将观察到`relax`(有约束)对结构的不同部分进行的小改变，直到它达到令人满意为止。
 
+> **PyMOL中显示的状态表示协议每**_**n**_**秒尝试的状态。在模拟过程中，它们可能已被接受，也可能未被接受。**
 
+还有其他特定的选项，例如仅当结构的能量得分发生变化时才更改PyMOL中的状态（使用`-update_pymol_on_energy_changes_only`），或者仅当构象发生变化时才更改状态（使用`-update_pymol_on_conformation_changes_only`）。
 
+#### 覆盖以前生成的输出
+
+如果您在同一目录中的结构文件与您的模拟将生成的输出结构文件的名称相似，您将看到错误：
+
+```bash
+...
+protocols.jd2.JobDistributor: no jobs were attempted, did you forget to pass -overwrite?
+...
+```
+
+当您再次运行相同的协议而不考虑第一次运行期间产生的输出文件时，这种情况最常发生。如果要覆盖文件，请传递选项`-overwrite`，否则在再次运行之前将输出文件保存在单独的位置。
+
+现在假设您完成了`relax`上一节中的模拟，然后重新运行相同的命令。您将看到上面的错误。现在我们将运行基本相同的协议，但有以下`-overwrite`选项：
+
+```bash
+$ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb -overwrite @flag_input_relax
+```
+
+您将看到仍然有两个输出结构文件1qys\_0001.PDB和1qys\_0002.pdb，但是它们将是最近编写的，您可以使用ls -l 1qys\_000\*.pdb进行检查。
+
+> **该`-overwrite`选项确实会覆盖打分文件，条目仍将附加到现有打分文件中。每次运行前必须手动移动或删除分数文件。**
+
+### 其他选项列表
+
+[此处](https://www.rosettacommons.org/docs/latest/full-options-list#out)给出了其他特定选项的完整列表。\
